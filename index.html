@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Game Hub</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        button { margin: 10px; padding: 10px; cursor: pointer; }
+        .game-list { display: flex; flex-direction: column; align-items: center; }
+        .game-link { margin: 5px; padding: 10px; border: 1px solid #000; display: inline-block; width: 80%; text-decoration: none; color: black; }
+    </style>
+</head>
+<body>
+
+    <h1>Web3 Game Hub</h1>
+
+    <button onclick="connectWallet()">Connect Wallet</button>
+    <p id="wallet-address">Not Connected</p>
+
+    <div class="game-list">
+        <h2>Game List</h2>
+        <script>
+            const games = [
+                { name: "Bombie", url: "https://cdn.bombie.xyz/games/bombie/index.html" },
+                { name: "Cattea", url: "https://cdn.cattea.ai/lineCattea/game/cattea.html" },
+                { name: "Delabs AUW", url: "https://dl-bx.delabs.gg/AUW/1073/Live/index-kaiaweb.html?statapp=fr_OTDAPT" },
+                { name: "Superz", url: "https://app.superz.superwalk.io/en-US/home/" },
+                { name: "Wizz Woods", url: "https://ln-game.wizzwoods.com/" },
+                { name: "Elder Glade", url: "https://line.elderglade.com/" },
+                { name: "Kuma Line", url: "https://kumaline.telgather.com/web/" },
+                { name: "Nebula 3", url: "https://www.nebula3gamefi.com/game/TheFoxSeeksFriends/index.html" },
+                { name: "PVZ Web3", url: "https://pvz.web3pvz.com/web/" },
+                { name: "Banana Line", url: "https://line-banana.carv.io/en/" },
+                { name: "Xhero Line", url: "https://xheroline.digitalfire.studio/" },
+                { name: "Slime Miner", url: "https://kaia.slimeminer.io/" },
+                { name: "Midnight Survivors", url: "https://game-midnightsurvivors.motions.gg/" },
+                { name: "Tsubasa Rivals", url: "https://app.line.tsubasa-rivals.com/" },
+                { name: "Jumping Peng", url: "https://jumpingpeng.com/" },
+                { name: "Goblin Line", url: "https://goblinline.digitalfire.studio/" },
+                { name: "Frog Defense", url: "https://play.frogdefense.io/" },
+                { name: "Heroic Arena", url: "https://game.heroicarena.xyz/" },
+                { name: "Darkstar", url: "https://webgl.darkstar.center/" },
+                { name: "Plunderstorm", url: "https://plunderstorm.xyz/" },
+                { name: "Twelve Goblins", url: "https://lmd.wiz-twelvegoblins.com/" },
+                { name: "Keitokun", url: "https://game.keitokun.com/" },
+                { name: "ACG Worlds", url: "https://m.acgworlds.com/TcomCampaign/#/" },
+                { name: "Race Master", url: "https://cdn.televerse.xyz/games/prod/racemaster/index.html" },
+                { name: "Meowtopia", url: "https://game.meowtopia.fun/" },
+                { name: "Sid Origins", url: "https://game.sidorigins.com/" },
+                { name: "PPP Parade", url: "https://dapp.ppparade.fun/" },
+                { name: "Bullet Storm", url: "https://bulletstorm.xyz/" },
+                { name: "Back to the Future", url: "https://mini-dapp.backtothefutr.app/?tab=home/" },
+                { name: "Wonder Bits", url: "https://dapp.wonderbits.io/" },
+                { name: "Axolts Escape", url: "https://www.axoltsescape.games/" },
+                { name: "Retro Gameboy", url: "https://gameboy-liff.retro.fun/" },
+                { name: "IX Swap Academy", url: "https://academy.ixswap.io/" },
+                { name: "Kaia Yuliverse", url: "https://kaia.yuliverse.com/" },
+                { name: "Lair Game", url: "https://app.lair.fi/game" },
+                { name: "Meme Social", url: "https://line.web.social.meme/" },
+                { name: "Kyuzo's Friends", url: "https://kyuzosfriends.com/game" },
+                { name: "Iskra", url: "https://bbb.iskra.world/?platform=line" }
+            ];
+
+            games.forEach(game => {
+                document.write(`<a class="game-link" href="${game.url}" target="_blank">${game.name}</a>`);
+            });
+        </script>
+    </div>
+
+    <script>
+        async function connectWallet() {
+            if (window.ethereum) {
+                try {
+                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                    document.getElementById('wallet-address').innerText = `Connected: ${accounts[0]}`;
+                } catch (error) {
+                    console.error(error);
+                    alert("Failed to connect wallet!");
+                }
+            } else {
+                alert("Web3 wallet not found! Install MetaMask.");
+            }
+        }
+    </script>
+
+</body>
+</html>
