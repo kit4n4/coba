@@ -1,0 +1,16 @@
+function checkAndClick() {
+    let mati = document.querySelector('.translate-x-1');
+    let menyala = document.querySelector('.translate-x-10');
+
+    if (mati) {
+        mati.closest('.cursor-pointer')?.click();
+    }
+}
+
+const observer = new MutationObserver(() => {
+    checkAndClick();
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+checkAndClick();
